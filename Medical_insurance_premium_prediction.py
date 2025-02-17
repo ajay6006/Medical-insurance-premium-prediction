@@ -2,10 +2,12 @@ import streamlit as st
 import pickle
 import numpy as np
 import os
+
+# Check the current working directory
 st.write("Current Working Directory: ", os.getcwd())
 
-# Load trained model
-with open("xgboost_model.pkl", "rb") as file:
+# Load the trained model
+with open("model.pkl", "rb") as file:
     model = pickle.load(file)
 
 # Define the app
