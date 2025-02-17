@@ -20,13 +20,21 @@ def main():
     sex = st.selectbox("Sex", ["Male", "Female"])
     region = st.selectbox("Region", ["northeast", "northwest", "southeast", "southwest"])
     
-    # Preprocessing
-    smoker = 1 if smoker == "Yes" else 0
-    sex = 1 if sex == "Male" else 0
+    # One-hot Encoding
+    sex_female = 1 if sex == "Female" else 0
+    sex_male = 1 if sex == "Male" else 0
+    smoker_no = 1 if smoker == "No" else 0
+    smoker_yes = 1 if smoker == "Yes" else 0
+    
+    region_northeast = 1 if region == "northeast" else 0
+    region_northwest = 1 if region == "northwest" else 0
+    region_southeast = 1 if region == "southeast" else 0
+    region_southwest = 1 if region == "southwest" else 0
     
     # Convert input to dataframe
-    input_data = pd.DataFrame([[age, sex, bmi, children, smoker]],
-                              columns=["age", "sex", "bmi", "children", "smoker"])
+    input_data = pd.DataFrame([[age, bmi, children, sex_female, sex_male, smoker_no, smoker_yes,
+                                region_northeast, region_northwest, region_southeast, region_southwest]],
+                              columns=["age", "bmi", "children", "female", "male", "no", "yes", "northeast", "northwest", "southeast", "southwest"])
     
     # Predict
     if st.button("Predict Premium"):
