@@ -7,7 +7,7 @@ import os
 st.write("Current Working Directory: ", os.getcwd())
 
 # Load the trained model
-with open("model.pkl", "rb") as file:
+with open("xgboost_model.pkl", "rb") as file:
     model = pickle.load(file)
 
 # Define the app
